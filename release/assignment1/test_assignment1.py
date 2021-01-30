@@ -74,10 +74,9 @@ def test_2_2c(answer):
 
 def test_3_1(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
-    assert sha1(str(answer + 11).encode('utf8')).hexdigest(
-    ) == 'b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f', "The number of features is incorrect. The 'len' and '.columns' functions may be useful here."
+    assert sha1(str(answer).encode('utf8')).hexdigest(
+    ) == "fe5dbbcea5ce7e2988b8c69bcfdfde8904aabc1f", "The number of features is incorrect. The 'len' and '.columns' functions may be useful here."
     return "Success"
-
 
 def test_3_3(answer1, answer2):
     assert not answer1 is None, "The 'X' variable does not exist. Have you passed in the correct variable?"
@@ -178,5 +177,5 @@ def test_5_4(answer):
 def test_5_5(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
     assert sha1(str(answer + 'k').encode('utf8')).hexdigest(
-    ) == 'a1382f8f61bcba9266e29a3fce9ccd7c9b961459', 'Your answer is incorrect. Please try again'
+    ) == 'a7d0008d025f37434b7cd8c853384cd610f6d92c', 'Your answer is incorrect. Please try again'
     return("Success")
