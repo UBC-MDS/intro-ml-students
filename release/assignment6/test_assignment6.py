@@ -232,7 +232,7 @@ def test_5_10(answer1,answer2):
     assert not answer1 is None, "Your answer does not exist. Have you passed in the correct variable?"
     assert not answer2 is None, "Your answer does not exist. Have you passed in the correct variable?"
     assert 'binary=True' in str(list(answer1)), "Make sure you are setting binary to true in your pipeline."
-    assert 'most_frequent' in str(list(answer1)), "Make sure you using the most frequent strategy for imputation."
+    assert 'most_frequent' in str(list(answer1)), "Make sure you using the most frequent strategy for themDummy Classifier."
     assert answer2.shape == (5, 4), "The dimensions of you solution is incorrect. Are you using 5-fold cross validation?"
     assert sorted(list(answer2.columns)) == ['fit_time', 'score_time', 'test_score', 'train_score'], "Your dataframe contains the incorrect columns. Are you setting up the mocel correctly?"
     assert min(answer2['test_score']) > 0.80 and max(answer2['test_score']) < 1, "The range of your test scores is incorrect. Are you fitting the model properly?"
