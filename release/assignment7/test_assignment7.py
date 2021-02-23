@@ -257,7 +257,7 @@ def test_3_2(answer):
 def test_3_3(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
     assert str(type(answer)) == "<class 'dict'>", "Make sure your answer is a dictionary."
-    assert sorted(list(answer.keys())) == ['mape_scorer','neg_mean_absolute_error','neg_mean_squared_error','neg_root_mean_square','r2'], "Your dictionary is missing some keys. Make sure you are adding all the metrics."
+    assert sorted(list(answer.keys())) == ['mape_scorer','neg_mean_absolute_error','neg_mean_squared_error','neg_root_mean_square','r2'] or sorted(list(answer.keys())) == ['mape_scorer','neg_mean_absolute_error','neg_mean_squared_error','neg_root_mean_square_error','r2'], "Your dictionary is missing some keys. Make sure you are adding all the metrics."
     assert 'mape' in str(answer['mape_scorer']), "Make sure your are passing the make_scorer function to the dictionary."
     assert 'greater_is_better=False' in str(answer['mape_scorer']), "Make sure your are passing the make_scorer function to the dictionary."
     return("Success")
