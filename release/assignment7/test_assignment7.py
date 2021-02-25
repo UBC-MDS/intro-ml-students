@@ -193,7 +193,7 @@ def test_2_12_1(answer, answer1):
 
 def test_2_13_1(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
-    assert round(answer,2)  in np.linspace(0,1,101), "Your training score is incorrect. Are you fitting and scoring the model properly?"
+    assert (round(answer,2)  in np.linspace(0,1,101)) or (round(answer,2) in [0.69,0.70]), "Your training score is incorrect. Are you fitting and scoring the model properly?"
     return("Success")
 
 def test_2_13_1_new(answer, answer1, X_train, y_train):
@@ -204,7 +204,7 @@ def test_2_13_1_new(answer, answer1, X_train, y_train):
 
 def test_2_13_2(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
-    assert round(answer,2)  in np.linspace(0,1,101), "Your testing score is incorrect. Are you fitting and scoring the model properly?"
+    assert (round(answer,2)  in np.linspace(0,1,101)) or (round(answer,2) in [0.69,0.70]), "Your testing score is incorrect. Are you fitting and scoring the model properly?"
     return("Success")
 
 def test_2_13_2_new(answer, answer1, X_test, y_test):
@@ -222,14 +222,24 @@ def test_2_15(answer):
     assert str(type(answer)) == "<class 'sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay'>", "Make sure you are generating a confusion matrix plot"
     return("Success")
 
+def check(value):
+    if 0.60 <= value <= 0.80 and round(value,2)==value:
+        return True
+    return False
+
+def check2(value):
+    if 0.60 <= value <= 0.90 and round(value,2)==value:
+        return True
+    return False
+
 def test_2_16_1(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
-    assert sha1(str(answer).encode('utf8')).hexdigest() == "7177575ab52680f3b082634dbeb8d2896016e7e1", "The recall value for exicted is incorrect. Are you analyzing the results correctly?"
+    assert check(answer), "The recall value for exicted is incorrect. Are you analyzing the results correctly?"
     return("Success")
 
 def test_2_16_2(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
-    assert sha1(str(answer).encode('utf8')).hexdigest() == "15e4f66808acb4ab8ac72b8c56eba22310069e7f", "The value for the weighted average is incorrect. Are you analyzing the results correctly?"
+    assert check2(answer), "The value for the weighted average is incorrect. Are you analyzing the results correctly?"
     return("Success")
 
 def test_2_16_3(answer):
