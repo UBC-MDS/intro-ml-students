@@ -176,6 +176,6 @@ def test_5_4(answer):
 
 def test_5_5(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
-    assert sha1(str(answer + 'k').encode('utf8')).hexdigest(
-    ) == 'a7d0008d025f37434b7cd8c853384cd610f6d92c', 'Your answer is incorrect. Please try again'
+    assert sha1(str(answer.upper() + 'k').encode('utf8')).hexdigest(
+    ) == 'a1382f8f61bcba9266e29a3fce9ccd7c9b961459', 'Your answer is incorrect. Please try again'
     return("Success")
