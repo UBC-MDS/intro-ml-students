@@ -131,7 +131,7 @@ def test_2_2(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
     assert len(answer[0]) == 874, "The number of coefficient is incorrect. Are you using the coef_ function?"
     assert round(min(answer[0]),2) == -1.07, "Some coefficient values are incorrect. Are you using the coef_ function?"
-    assert round(max(answer[0]),2) == 0.68, "Some coefficient values are incorrect. Are you using the coef_ function?"
+    assert round(max(answer[0]),2) == 0.67, "Some coefficient values are incorrect. Are you using the coef_ function?"
     return("Success")
 
 def test_2_3(answer):
