@@ -136,8 +136,9 @@ def test_2_2(answer):
 
 def test_2_3(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
-    assert len(answer) == 874, "The number of features are incorrect. Are you using the get_feature_names function?"
-    assert sha1(str(sorted(answer)).encode('utf8')).hexdigest() =='ca83ca2c0d1bf91315117d2bbaa9c63def3c31bc', "The features are incorrect. Are you using the get_feature_names function."
+    assert len(answer) == 874, "The number of features are incorrect. Are you using the get_feature_names_out function?"
+    # For some reason Joel and Betty see different features here
+    assert sha1(str(sorted(answer)).encode('utf8')).hexdigest() in ['c39c6376c7edfff9b76f37b56eb0c983d595a9a6', 'ca83ca2c0d1bf91315117d2bbaa9c63def3c31bc'], "The features are incorrect. Are you using the get_feature_names_out function?"
     return("Success")
 
 def test_2_4(answer):
