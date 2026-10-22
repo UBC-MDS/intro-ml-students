@@ -124,7 +124,7 @@ def test_1_16(answer):
 def test_2_1(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
     assert 'max_features=874' in str(list(answer)), "Your best model is incorrect. Are you using the best_estimator_ function?"
-    assert 'C=0.0340' in str(list(answer)), "Your best model is incorrect. Are you using the best_estimator_ function?"
+    assert 'C=np.float64(0.0340' in str(list(answer)), "Your best model is incorrect. Are you using the best_estimator_ function?"
     return("Success")
 
 def test_2_2(answer):
@@ -153,7 +153,11 @@ def test_2_5(answer):
     assert answer.shape == (10, 2), "The dimensions of your dataframe is incorrect. Are you selecting the top 10 negative words?"
     assert list(answer.loc[854])[0] == 'worst', "Your dataframe contains incorrect values. Are you selecting the top 10 negative words?"
     assert list(answer.loc[89])[0] == 'boring', "Your dataframe contains incorrect values. Are you selecting the top 10 negative words?"
-    assert list(answer.loc[351])[0] == 'horrible', "Your dataframe contains incorrect values. Are you selecting the top 10 negative words?"
+    # For some reason Betty and Joel see different index keys for the word 'horrible'
+    if 350 in answer.index:
+        assert list(answer.loc[350])[0] == 'horrible', "Your dataframe contains incorrect values. Are you selecting the top 10 negative words?"
+    elif 351 in answer.index:
+        assert list(answer.loc[351])[0] == 'horrible', "Your dataframe contains incorrect values. Are you selecting the top 10 negative words?"
     return("Success")
 
 def test_2_7(answer):
@@ -197,8 +201,9 @@ def test_3_6(answer):
     assert not answer is None, "Your answer does not exist. Have you passed in the correct variable?"
     assert answer.shape == (10000, 5), "The dimensions of your dataframe is incorrect."
     assert sorted(list(answer.columns)) == ['neg_label_prob', 'pos_label_prob', 'predicted_y', 'review', 'true_label'], "ncorrect column names. Make sure you are specifying the required columns."
-    assert list(answer['predicted_y']).count('neg') == 4863 or list(answer['predicted_y']).count('neg') == 4862, "The predicted number of negative reviews is incorrect. Are you predicting correctly?"
-    assert list(answer['predicted_y']).count('pos') == 5137 or list(answer['predicted_y']).count('pos') == 5138, "The predicted number of positive reviews is incorrect. Are you predicting correctly?"
+    pos_neg_counts = answer['predicted_y'].value_counts()
+    assert pos_neg_counts['neg'] in range(4862, 4869), "The predicted number of negative reviews is incorrect. Are you predicting correctly?"
+    assert pos_neg_counts['pos'] in range(5132, 5139), "The predicted number of positive reviews is incorrect. Are you predicting correctly?"
     return("Success")
 
 def test_3_7(answer):
